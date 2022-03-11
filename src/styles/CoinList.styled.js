@@ -1,37 +1,52 @@
 import styled from "styled-components/macro";
 import ReactPaginate from "react-paginate";
 
-export const CoinTableStyled = styled.table`
-  font-size: clamp(10px, 1.5vw);
+export const TableContainerStyled = styled.div`
   width: 100%;
-  min-width: 375px;
+  padding: 1em;
+  border-radius: 25px;
+  width: auto;
+  background-color: #fff;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+  @media (max-width: 425px) {
+    padding: 0.25em;
+  }
+`;
+
+export const CoinTableStyled = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  strong {
+    font-size: clamp(15px, 2.5vw, 20px);
+  }
+
+  p {
+    font-size: clamp(12px, 2.5vw, 15px);
+  }
+
   th,
   td {
-    padding: 0.5em;
+    padding: 0em 0.5em;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
   }
 
   th {
+    padding-bottom: 1em;
     border-bottom: solid 2px #dfe6e9;
-    padding: 1em;
+    text-align: right;
+  }
+
+  td {
+    text-align: right;
   }
 
   tr {
-    width: 100%;
+    width: auto;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    padding: 0.5em;
-  }
-
-  tfoot {
     padding: 1.5em;
-  }
-  tfoot > tr {
-    justify-content: center;
   }
 
   tbody > tr {
@@ -40,14 +55,14 @@ export const CoinTableStyled = styled.table`
     }
   }
 
-  .rank {
-    width: 10%;
+  tfoot {
     display: grid;
     place-items: center;
+    padding: 1.5em;
   }
 
   .coin-info {
-    min-width: 20px;
+    text-align: left;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -55,7 +70,7 @@ export const CoinTableStyled = styled.table`
     gap: 0.5em;
 
     img {
-      width: 25px;
+      width: 30px;
       height: auto;
       border-radius: 25px;
     }
@@ -64,7 +79,7 @@ export const CoinTableStyled = styled.table`
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 0.25em;
+      gap: 0.5em;
     }
 
     @media (max-width: 768px) {
@@ -77,7 +92,7 @@ export const CoinTableStyled = styled.table`
   }
 
   .percentage {
-    width: 45%;
+    width: 50%;
   }
 
   .bold {
@@ -92,16 +107,13 @@ export const CoinTableStyled = styled.table`
     color: #eb4d4b;
   }
 
-  .hide-fs {
-    display: none;
-  }
-
-  strong {
-    font-size: clamp(12px, 1vw, 15px);
-  }
-
-  p {
-    font-size: clamp(10px, 1vw, 12px);
+  @media (max-width: 425px) {
+    tr {
+      padding: 1em;
+    }
+    th {
+      text-align: center;
+    }
   }
 
   @media (max-width: 600px) {
@@ -118,33 +130,6 @@ export const CoinTableStyled = styled.table`
 
     .hide-fs {
       display: block;
-    }
-  }
-`;
-
-export const ListHeaderStyled = styled.div`
-  border-bottom: solid 2px #dfe6e9;
-  display: grid;
-  grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 1fr;
-  align-items: center;
-  text-align: right;
-  width: 100%;
-  min-width: 768px;
-  padding: 1em;
-
-  .center {
-    place-self: center;
-  }
-
-  .visibility {
-    visibility: visible;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    grid-template-columns: 5%repeat (4, 20%);
-    .visibility {
-      visibility: hidden;
     }
   }
 `;

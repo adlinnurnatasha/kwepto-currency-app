@@ -9,7 +9,7 @@ export const FooterContainerStyled = styled.footer`
   align-items: center;
 
   .footer-img {
-    height: 90%;
+    height: 100%;
     img {
       height: 100%;
       width: 100%;

@@ -104,7 +104,7 @@ export const CrytoMarketStyled = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: #fff;
   background-color: #f7a528;
   padding: 1em;

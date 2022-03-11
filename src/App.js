@@ -8,10 +8,11 @@ import {
   FooterStyled,
 } from "./styles/Main.styled";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import PriceTracker from "./pages/PriceTracker";
+import CurrencyPage from "./pages/CurrencyPage";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
-import Footer from "./components/Footer";
 import LiveGraphPage from "./pages/LiveGraphPage";
 import News from "./pages/News";
 
@@ -24,18 +25,20 @@ const App = () => {
   // Get Data
   useEffect(() => {
     setLoading(true);
+    // Get Coin Data
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
-        setCoins(res.data.slice(0, 150));
+        setCoins(res.data);
         setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
 
+    // Get Crypto Market Data
     axios
       .get(`https://api.coingecko.com/api/v3/global`)
       .then((res) => {
@@ -45,6 +48,24 @@ const App = () => {
         console.log(error);
       });
   }, [currency]);
+
+  // Format Currency
+  const formatCurrency = (price) => {
+    let newPrice = 0;
+    if (price < 0.99 && price > -1) {
+      newPrice = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: currency.toUpperCase(),
+        maximumFractionDigits: 8,
+      }).format(price);
+    } else {
+      newPrice = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: currency.toUpperCase(),
+      }).format(price);
+    }
+    return newPrice;
+  };
 
   return (
     <AppStyled>
@@ -61,7 +82,14 @@ const App = () => {
                 coins={coins}
                 currency={currency}
                 setCurrency={setCurrency}
+                formatCurrency={formatCurrency}
               />
+            }
+          />
+          <Route
+            path="/currencies"
+            element={
+              <CurrencyPage coins={coins} formatCurrency={formatCurrency} />
             }
           />
           <Route path=":coinid" element={<CoinPage />} />

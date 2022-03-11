@@ -3,7 +3,6 @@ import axios from "axios";
 import {
   CenterEverythingStyled,
   HeaderStyled,
-  SectionStyled,
   WhiteBgStyled,
 } from "../styles/Main.styled";
 import TrendList from "./TrendList";
@@ -13,7 +12,7 @@ import Marquee from "react-fast-marquee";
 const NowTrending = () => {
   const [trend, setTrend] = useState([]);
 
-  // Get trending coins
+  // Get Trending Coins
   useEffect(() => {
     axios
       .get(`https://api.coingecko.com/api/v3/search/trending`)
