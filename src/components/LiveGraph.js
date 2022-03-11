@@ -5,25 +5,25 @@ import { createChart } from "lightweight-charts";
 import { io } from "socket.io-client";
 
 function StockPrice() {
-  //   useEffect(() => {
-  //     let ws = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@trade");
-  //     let stockPriceElement = document.getElementById("stock-price");
-  //     let lastPrice = null;
+  useEffect(() => {
+    let ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+    let stockPriceElement = document.getElementById("stock-price");
+    let lastPrice = null;
 
-  //     ws.onmessage = (evt) => {
-  //       let stockObject = JSON.parse(evt.data);
-  //       console.log(stockObject);
-  //       let price = parseFloat(stockObject.p).toFixed(4);
-  //       stockPriceElement.innerText = price;
-  //       stockPriceElement.style.color =
-  //         !lastPrice || lastPrice === price
-  //           ? "black"
-  //           : price > lastPrice
-  //           ? "green"
-  //           : "red";
-  //       lastPrice = price;
-  //     };
-  //   }, []); // run this onload
+    ws.onmessage = (evt) => {
+      let stockObject = JSON.parse(evt.data);
+      console.log(stockObject);
+      let price = parseFloat(stockObject.p).toFixed(4);
+      stockPriceElement.innerText = price;
+      stockPriceElement.style.color =
+        !lastPrice || lastPrice === price
+          ? "black"
+          : price > lastPrice
+          ? "green"
+          : "red";
+      lastPrice = price;
+    };
+  }, []); // run this onload
 
   useEffect(() => {
     const log = console.log;
@@ -90,7 +90,7 @@ function StockPrice() {
 
   return (
     <div id="tvchart">
-      {/* <h1 id="stock-price">---</h1> */}
+      <h1 id="stock-price">---</h1>
       {/* <h2 id="tvchart" /> */}
       {/* <script src="rest_api.js"></script> */}
     </div>

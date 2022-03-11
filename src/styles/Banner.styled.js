@@ -41,24 +41,3 @@ export const BannerContainer = styled.div`
     }
   }
 `;
-
-export const NewsBannerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-`;
-
-export const NewsTextBanner = styled.div`
-  text-align: left;
-
-  h1 {
-    font-size: 5rem;
-    font-weight: 800;
-  }
-
-  p {
-    font-size: 1.8rem;
-    font-weight: 400;
-  }
-`;

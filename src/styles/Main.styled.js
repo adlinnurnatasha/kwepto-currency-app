@@ -64,7 +64,7 @@ export const CardStyled = styled.div`
 // To give center text and items within a component
 export const SectionStyled = styled.section`
   margin-inline: auto;
-  max-width: 1028px;
+  max-width: 1280px;
   margin-top: 2em;
 `;
 
