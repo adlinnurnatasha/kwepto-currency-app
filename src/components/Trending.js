@@ -7,7 +7,7 @@ import {
   TrendingCointainerStyled,
   CardContainerStyled,
 } from "../styles/TrendList.styled";
-import Marquee from "react-easy-marquee";
+import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
 
 const Trending = ({ currency }) => {
@@ -38,7 +38,7 @@ const Trending = ({ currency }) => {
               <p>Trending coins that people are searching for</p>
             </HeaderStyled>
             <Marquee
-              duration={45000}
+              speed={50}
               height="25vh"
               width="100%"
               reverse={true}
@@ -47,7 +47,7 @@ const Trending = ({ currency }) => {
             >
               <CardContainerStyled>
                 {trend.map((trends) => (
-                  <Link to={`/${trends.item.id}`}>
+                  <Link to={`/currencies/${trends.item.id}`}>
                     <TrendList
                       key={trends.item.coin_id}
                       trends={trends}

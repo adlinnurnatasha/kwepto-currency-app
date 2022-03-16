@@ -68,7 +68,6 @@ export const NewsCardStyled = styled.div`
   border-radius: 26px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.2px);
-  /* border: 2.5px solid #484848; */
 
   display: flex;
   flex-direction: column;

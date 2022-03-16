@@ -1,5 +1,4 @@
 import styled from "styled-components/macro";
-import ReactPaginate from "react-paginate";
 
 export const TableContainerStyled = styled.div`
   width: 100%;
@@ -130,25 +129,6 @@ export const CoinTableStyled = styled.table`
 
     .hide-fs {
       display: block;
-    }
-  }
-`;
-
-export const PageNumberStyled = styled(ReactPaginate)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  a {
-    margin: 0 0.5em;
-    &:active {
-      color: #f7a528;
     }
   }
 `;

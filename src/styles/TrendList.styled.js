@@ -55,15 +55,15 @@ export const CardStyled = styled.div`
   padding: 1.5em 2.5em;
   gap: 0.5em;
   background: #ffffff;
-  border: 2.5px solid #484848;
+  /* border: 2.5px solid #484848; */
   border-radius: 25px;
   margin-left: 2em;
   display: flex;
   align-items: center;
   flex-flow: wrap;
   justify-content: flex-start;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
-    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
   .coin-info {
     display: flex;

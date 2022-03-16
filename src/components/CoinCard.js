@@ -1,5 +1,5 @@
 import React from "react";
-import { Sparklines, SparklinesLine } from "react-sparklines";
+import { Sparklines, SparklinesCurve } from "react-sparklines";
 import { CardCointainerStyled, CoinRowStyled } from "../styles/CoinCard.styled";
 
 const CoinCard = ({ coin, formatCurrency }) => {
@@ -30,12 +30,12 @@ const CoinCard = ({ coin, formatCurrency }) => {
       </CoinRowStyled>
       <div className="graph-row">
         {coin.price_change_percentage_24h_in_currency < 0 ? (
-          <Sparklines data={sparkLine} width="100" height="60">
-            <SparklinesLine color="red" />
+          <Sparklines data={sparkLine} width={100} height={60}>
+            <SparklinesCurve color="red" />
           </Sparklines>
         ) : (
-          <Sparklines data={sparkLine} width="100" height="60">
-            <SparklinesLine color="green" />
+          <Sparklines data={sparkLine} width={100} height={60}>
+            <SparklinesCurve color="green" />
           </Sparklines>
         )}
       </div>

@@ -15,7 +15,7 @@ export const NavLinksStyled = styled.div`
   align-items: center;
   justify-content: flex-start;
   background-color: #fff;
-  padding: 1em;
+  padding: 1em 2em;
 
   .logo {
     max-width: 5.5vw;
@@ -38,7 +38,7 @@ export const NavLinksStyled = styled.div`
   .end {
     position: absolute;
     right: 0px;
-    margin: 0 1em;
+    margin: 0 2em;
   }
 
   .responsive {
@@ -51,6 +51,11 @@ export const NavLinksStyled = styled.div`
 
   li {
     font-size: 1.2em;
+    font-weight: 500;
+
+    :hover {
+      color: #f7a528;
+    }
   }
 
   @media (max-width: 800px) {
@@ -83,7 +88,7 @@ export const NavLinksStyled = styled.div`
         background-color: #484848;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
       }
       li {

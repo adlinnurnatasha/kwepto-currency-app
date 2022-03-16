@@ -37,6 +37,10 @@ export const HeaderStyled = styled.div`
     font-size: clamp(18px, 2.5vw, 25px);
     font-weight: 400;
   }
+
+  @media (max-width: 375px) {
+    text-align: center;
+  }
 `;
 
 // Loading Screen Style
@@ -55,6 +59,10 @@ export const SectionStyled = styled.section`
   margin-inline: auto;
   max-width: 1280px;
   margin-top: 2em;
+`;
+
+export const WrapperStyled = styled.div`
+  padding: 3em 0em;
 `;
 
 // Center Everyhthing

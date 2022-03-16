@@ -1,7 +1,7 @@
 import React from "react";
 import { CardStyled } from "../styles/TrendList.styled";
 
-const TrendList = ({ rate, trends }) => {
+const TrendList = ({ trends }) => {
   return (
     <CardStyled>
       <div className="coin-info">

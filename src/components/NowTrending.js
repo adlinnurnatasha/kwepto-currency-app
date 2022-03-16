@@ -7,7 +7,6 @@ import {
 } from "../styles/Main.styled";
 import TrendList from "./TrendList";
 import { CardContainerStyled } from "../styles/TrendList.styled";
-import Marquee from "react-fast-marquee";
 
 const NowTrending = () => {
   const [trend, setTrend] = useState([]);
@@ -31,13 +30,11 @@ const NowTrending = () => {
         <p>Trending coins that people are searching for</p>
       </HeaderStyled>
       <CenterEverythingStyled>
-        <Marquee duration={50000} height="20vh" width="55vw" reverse={true}>
-          <CardContainerStyled>
-            {trend.map((trends) => (
-              <TrendList key={trends.coin_id} trends={trends} />
-            ))}
-          </CardContainerStyled>
-        </Marquee>
+        <CardContainerStyled>
+          {trend.map((trends) => (
+            <TrendList key={trends.coin_id} trends={trends} />
+          ))}
+        </CardContainerStyled>
       </CenterEverythingStyled>
     </WhiteBgStyled>
   );

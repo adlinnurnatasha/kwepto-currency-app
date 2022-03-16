@@ -20,8 +20,10 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
   };
 
   const [search, setSearch] = useState("");
-  let filterCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
+  let filterCoins = coins.filter(
+    (coin) =>
+      coin.name.toLowerCase().includes(search.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(search.toLowerCase())
   );
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -37,16 +39,20 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
       </SectionStyled>
       <SectionStyled>
         <CryptoSearhStyled>
-          <input type="text" onChange={handleChange} />
+          <input
+            type="text"
+            placeholder="Search Coins"
+            onChange={handleChange}
+          />
         </CryptoSearhStyled>
         <CurrencyContainerStyled>
           {filterCoins
             .slice(pagesVisited, pagesVisited + coinsPerPage)
             .map((coin) => (
-              <Link to={`/${coin.id}`}>
+              <Link to={`/currencies/${coin.id}`}>
                 <CoinCard
                   coin={coin}
-                  key={coin.symbol}
+                  key={coin.market_cap_rank}
                   formatCurrency={formatCurrency}
                 />
               </Link>

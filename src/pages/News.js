@@ -3,7 +3,7 @@ import "../styles/News.css";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
-import { SectionStyled } from "../styles/Main.styled";
+import { SectionStyled, LoadingScreenStyled } from "../styles/Main.styled";
 import {
   NewsHeaderContainer,
   NewsContainerGridStyled,
@@ -25,7 +25,12 @@ const News = ({ simplified }) => {
     setVisible((preValue) => preValue + 3);
   };
 
-  if (!cryptoNews?.value) return <h1>Loading..</h1>;
+  if (!cryptoNews?.value)
+    return (
+      <LoadingScreenStyled>
+        <h1>Loading..</h1>
+      </LoadingScreenStyled>
+    );
 
   return (
     <>
