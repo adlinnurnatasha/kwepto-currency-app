@@ -23,31 +23,39 @@ const Trending = ({ currency }) => {
       .catch((error) => {
         console.log(error);
       });
+
+    return () => {
+      setTrend();
+    };
   }, []);
 
   return (
     <TrendingCointainerStyled>
       <SectionStyled>
         <div className="flex">
-          <div className="trending-img">
+          <div
+            className="trending-img"
+            data-aos="fade-up-right"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
             <img src={TrendingImg} alt="Trending Mascot" />
           </div>
-          <div className="trending-content">
+          <div className="trending-content" data-aos="fade-in">
             <HeaderStyled>
               <h1>TRENDING COINS</h1>
               <p>Trending coins that people are searching for</p>
             </HeaderStyled>
             <Marquee
               speed={50}
-              height="25vh"
-              width="100%"
+              style={{ width: "100%", height: "25vh" }}
               reverse={true}
               pauseOnHover={true}
               className="marquee"
             >
               <CardContainerStyled>
-                {trend.map((trends) => (
-                  <Link to={`/currencies/${trends.item.id}`}>
+                {trend.map((trends, i) => (
+                  <Link to={`/currencies/${trends.item.id}`} key={i}>
                     <TrendList
                       key={trends.item.coin_id}
                       trends={trends}

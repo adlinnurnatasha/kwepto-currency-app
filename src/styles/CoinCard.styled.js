@@ -1,15 +1,17 @@
 import styled from "styled-components/macro";
 
 export const CryptoSearhStyled = styled.form`
-  margin: 2.5em 0.5em;
+  margin: 2.5em auto;
+  text-align: center;
+  width: 550px;
 
   textarea,
   input {
     outline: none;
   }
   input {
-    width: 280px;
-    padding: 1em;
+    width: 550px;
+    padding: 1.5em;
     border: 1px solid #dedede;
     border-radius: 15px;
     size: 20px;
@@ -20,8 +22,16 @@ export const CryptoSearhStyled = styled.form`
     }
   }
 
-  @media (max-width: 1279px) {
-    text-align: center;
+  @media (max-width: 425px) {
+    input {
+      width: 280px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    input {
+      width: 400px;
+    }
   }
 `;
 

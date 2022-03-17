@@ -20,6 +20,7 @@ import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
+  const [exchanges, setExchanges] = useState();
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
 
@@ -33,7 +34,6 @@ const App = () => {
       )
       .then((res) => {
         setCoins(res.data);
-        console.log(res.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -95,6 +95,10 @@ const App = () => {
           {/* <Route path="/exchange" element={<Exchange />} /> */}
           <Route path="/live" element={<LiveGraphPage />} />
           <Route path="/exchanges" element={<Exchange />} />
+          <Route
+            path="/exchanges"
+            element={<Exchange loading={loading} exchanges={exchanges} />}
+          />
           <Route path="/news" element={<News />} />
           <Route path="/currencies/:coinid" element={<CoinPage />} />
           <Route path="*" element={<PageNotFound />} />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import CoinCard from "../components/CoinCard";
 import { SectionStyled, HeaderStyled } from "../styles/Main.styled";
@@ -19,6 +19,10 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
     setPageNumber(selected);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [search, setSearch] = useState("");
   let filterCoins = coins.filter(
     (coin) =>
@@ -31,48 +35,54 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
 
   return (
     <>
-      <SectionStyled>
-        <HeaderStyled>
-          <h1>CRYPTOCURRENCIES</h1>
-          <p>Today's Cryptocurrency Prices by Market Cap</p>
-        </HeaderStyled>
-      </SectionStyled>
-      <SectionStyled>
-        <CryptoSearhStyled>
-          <input
-            type="text"
-            placeholder="Search Coins"
-            onChange={handleChange}
-          />
-        </CryptoSearhStyled>
-        <CurrencyContainerStyled>
-          {filterCoins
-            .slice(pagesVisited, pagesVisited + coinsPerPage)
-            .map((coin) => (
-              <Link to={`/currencies/${coin.id}`}>
-                <CoinCard
-                  coin={coin}
-                  key={coin.market_cap_rank}
-                  formatCurrency={formatCurrency}
-                />
-              </Link>
-            ))}
-        </CurrencyContainerStyled>
-        <CurrencyPageStyled>
-          <ReactPaginate
-            previousLabel={<RiArrowLeftSFill />}
-            nextLabel={<RiArrowRightSFill />}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            pageRangeDisplayed="11"
-            containerClassName={"paginate-container"}
-            previousLinkClassName={"paginate-prev"}
-            nextLinkClassName={"paginate-next"}
-            disabledClassName={"paginate-disable"}
-            activeClassName={"paginate-active"}
-          />
-        </CurrencyPageStyled>
-      </SectionStyled>
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <SectionStyled>
+          <HeaderStyled>
+            <h1>CRYPTOCURRENCIES</h1>
+            <p>Today's Cryptocurrency Prices by Market Cap</p>
+          </HeaderStyled>
+        </SectionStyled>
+        <SectionStyled>
+          <CryptoSearhStyled>
+            <input
+              type="text"
+              placeholder="Search Coins"
+              onChange={handleChange}
+            />
+          </CryptoSearhStyled>
+
+          <CurrencyContainerStyled>
+            {filterCoins
+              .slice(pagesVisited, pagesVisited + coinsPerPage)
+              .map((coin, i) => (
+                <Link to={`/currencies/${coin.id}`} key={i}>
+                  <div data-aos="flip-left" data-aos-duration="1000">
+                    <CoinCard
+                      coin={coin}
+                      key={coin.market_cap_rank}
+                      formatCurrency={formatCurrency}
+                    />
+                  </div>
+                </Link>
+              ))}
+          </CurrencyContainerStyled>
+
+          <CurrencyPageStyled>
+            <ReactPaginate
+              previousLabel={<RiArrowLeftSFill />}
+              nextLabel={<RiArrowRightSFill />}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              pageRangeDisplayed="11"
+              containerClassName={"paginate-container"}
+              previousLinkClassName={"paginate-prev"}
+              nextLinkClassName={"paginate-next"}
+              disabledClassName={"paginate-disable"}
+              activeClassName={"paginate-active"}
+            />
+          </CurrencyPageStyled>
+        </SectionStyled>
+      </div>
     </>
   );
 };

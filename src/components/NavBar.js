@@ -32,6 +32,9 @@ const NavBar = ({ currency, setCurrency }) => {
       .catch((error) => {
         console.log(error);
       });
+    return () => {
+      setData();
+    };
   }, []);
 
   return (
@@ -60,6 +63,9 @@ const NavBar = ({ currency, setCurrency }) => {
             <FilterCoinList currency={currency} setCurrency={setCurrency} />
           </div>
         </ul>
+        <div className="end">
+          <FilterCoinList currency={currency} setCurrency={setCurrency} />
+        </div>
         <div className="responsive">
           <button className="responsie burger">
             <GiHamburgerMenu onClick={toggleNav} />

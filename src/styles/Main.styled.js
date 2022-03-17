@@ -14,8 +14,10 @@ export const NavStyled = styled.nav`
 // Base style for MainSection
 export const BodyStyled = styled.div`
   grid-row-start: 2;
-  margin-inline: auto;
   width: 100%;
+  @media (max-width: 425px) {
+    overflow-x: hidden;
+  }
 `;
 
 // Base style for Footer

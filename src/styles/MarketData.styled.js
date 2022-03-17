@@ -14,7 +14,7 @@ export const MarketInfoContainer = styled.div`
     line-height: 1;
 
     h1 {
-      font-size: clamp(50px, 3.5vw, 60px);
+      font-size: clamp(40px, 3.5vw, 65px);
       font-weight: 700;
     }
     p {
@@ -23,16 +23,26 @@ export const MarketInfoContainer = styled.div`
       color: #8f8f8f;
       margin: 1.5em 0em;
     }
+    @media (max-width: 450px) {
+      .market-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 
   .info-card-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 295px);
     align-items: center;
     justify-content: center;
-    column-gap: 2.5em;
-    row-gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 295px);
+    column-gap: 1.5em;
+    row-gap: 1.5em;
+    align-items: center;
+    justify-content: center;
 
     .info-card {
       background-color: #fff;
@@ -91,7 +101,7 @@ export const MarketContainerStyled = styled.div`
     width: 50%;
     line-height: 1.3;
     h1 {
-      font-size: clamp(50px, 3.5vw, 65px);
+      font-size: clamp(40px, 3.5vw, 60px);
       font-weight: 700;
     }
     p {
@@ -107,14 +117,18 @@ export const MarketContainerStyled = styled.div`
       padding: 0.5em 2em;
       border-radius: 25px;
       background-color: #f8a122;
+      animation: pulse infinite;
+      animation-duration: 1s;
     }
   }
   .market-coin {
     display: grid;
-    grid-template-columns: repeat(2, 250px);
+    grid-template-columns: repeat(auto-fit, 250px);
+    align-items: center;
+    justify-content: center;
     column-gap: 1em;
     row-gap: 1em;
-    place-items: center;
+    width: 50%;
   }
 
   @media (max-width: 425px) {
@@ -122,10 +136,13 @@ export const MarketContainerStyled = styled.div`
       width: 80%;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1030px) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .market-coin {
+      width: 100%;
+    }
     .market-txt {
       width: 100%;
       text-align: center;
